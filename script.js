@@ -1,5 +1,5 @@
 /* ====== Set worker source for PDF.js ====== */
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf-viewer/pdf.worker.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 function extractFilename(url) {
     try {
@@ -42,7 +42,7 @@ function preparePdfLoadOptions(url) {
 const PDF_URL = getPdfUrlFromQuery();
 
 const DPR = Math.max(1, window.devicePixelRatio || 1);
-const BASELINE = 0.8; 
+const BASELINE = 0.8;
 const UI_MIN = 0.5;
 const UI_MAX = 3.0;
 const KEEP_NEIGHBOR = 1;
