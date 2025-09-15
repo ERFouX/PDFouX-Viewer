@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+    background: #808080;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+.toolbar {
+    background: #202124;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: space-between;
+    height: 56px;
+    flex-shrink: 0;
+}
+.btn {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn:active {
+    transform: scale(0.98);
+}
+input[type="number"] {
+    width: 3.2rem;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #111;
+    color: #fff;
+    text-align: center;
+}
+#pdf-container {
+	flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #808080;
+    padding: 10px;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+}
+.pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+.page-shell {
+    width: min(900px, 100%);
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    min-height: 140px;
+    padding: 8px;
+    position: relative;
+}
+.page-inner {
+    display: inline-block;
+}
+.page-shell.canvas-scroll {
+    overflow: auto;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+}
+.page-shell canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.12s linear;
+}
+.page-loading {
+    color: #666;
+    padding: 40px;
+    font-size: 14px;
+}
+
+.scroll-indicator {
+    position: fixed;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 18px;
+    font-size: 13px;
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.scroll-indicator.show {
+    opacity: 1;
+}
+/* Dark mode filter on canvases */
+.dark-mode .page-shell canvas {
+    filter: invert(1) hue-rotate(180deg) !important;
+}
+@media (max-width: 600px) {
+    .toolbar {
+        height: 52px;
+        padding: 6px;
+    }
+    .btn {
+        font-size: 20px;
+    }
+}
